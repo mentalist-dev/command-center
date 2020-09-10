@@ -1,4 +1,5 @@
 ﻿using System;
+using Mentalist.CommandCenter.Events;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Mentalist.CommandCenter
@@ -10,7 +11,10 @@ namespace Mentalist.CommandCenter
         {
             addCommands?.Invoke(new CommandRegistry(services));
 
+            services.AddSingleton<IEventSink, NoOpEventSink>();
+
             services.AddSingleton<ICommandContextFactory, TCommandContextFactory>();
+
             return services
                     .AddScoped<ICommandCenter, CommandCenter>()
                 ;
