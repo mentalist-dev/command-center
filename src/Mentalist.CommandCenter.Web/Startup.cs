@@ -1,4 +1,5 @@
 using Mentalist.CommandCenter.Web.Commands;
+using Mentalist.CommandCenter.Web.Commands.Context;
 using Mentalist.CommandCenter.Web.DataLayer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,6 +26,7 @@ namespace Mentalist.CommandCenter.Web
                 {
                     registry
                         .Add<GetWeatherForecastCommand>()
+                        .Add<LogWeatherForecastRequestCommand>()
                         .FromAssembly(GetType().Assembly);
                 }
             );

@@ -2,6 +2,6 @@
 {
     public interface ICommandContextFactory
     {
-        ICommandContext Create(ICommandContextParameters parameters);
+        ICommandContext Create(ICommandCenter commands, ICommandContextParameters parameters);
     }
 }

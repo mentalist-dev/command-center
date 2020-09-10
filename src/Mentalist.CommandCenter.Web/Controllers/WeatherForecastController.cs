@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Mentalist.CommandCenter.Web.Commands;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,12 +17,12 @@ namespace Mentalist.CommandCenter.Web.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<IEnumerable<WeatherForecast>> Get()
         {
             using var context = _commands.CreateContext(new CommandContextParameters());
 
             var command = _commands.CreateCommand<GetWeatherForecastCommand>();
-            var response = command.Execute(context);
+            var response = await command.ExecuteAsync(context);
             
             context.Complete();
 

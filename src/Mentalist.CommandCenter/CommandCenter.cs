@@ -18,7 +18,7 @@ namespace Mentalist.CommandCenter
 
         public ICommandContext CreateContext(ICommandContextParameters parameters)
         {
-            return _commandContextFactory.Create(parameters);
+            return _commandContextFactory.Create(this, parameters);
         }
 
         public TCommand CreateCommand<TCommand>() where TCommand : class, ICommand
